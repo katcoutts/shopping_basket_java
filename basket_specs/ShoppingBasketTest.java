@@ -38,6 +38,14 @@ public class ShoppingBasketTest {
   }
 
   @Test
+  public void canEmptyBasket(){
+    shoppingBasket.addItemToShopping(pasta);
+    shoppingBasket.addItemToShopping(pizza);
+    shoppingBasket.emptyBasket();
+    assertEquals(0, shoppingBasket.getShoppingItems().size());
+  }
+
+  @Test
   public void canAddItemToBasket(){
     shoppingBasket.addItemToShopping(pasta);
     assertEquals(1, shoppingBasket.getShoppingItems().size());

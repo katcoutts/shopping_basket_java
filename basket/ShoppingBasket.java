@@ -32,6 +32,10 @@ public class ShoppingBasket{
     shoppingItems.remove(item);
   }
 
+  public void emptyBasket(){
+    shoppingItems.clear();
+  }
+
   public float getBasicShoppingCost(){
     float cost = 0.0f;
     for (ShoppingItem item : getShoppingItems()){
