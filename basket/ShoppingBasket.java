@@ -58,6 +58,22 @@ public class ShoppingBasket{
     return cost;
   }
 
+  public float discountOfTenPerCentIfOver20(){
+    float cost = getShoppingCostWithBogof();
+    if (cost > 20.00){
+      cost -= (cost / 10);
+    }
+    return cost;
+  }
+
+  public float discountForLoyaltyCard(){
+    float cost = discountOfTenPerCentIfOver20();
+    if (loyaltyCard == true){
+      cost -= (cost / 50);
+    }
+    return cost;
+  }
+
 
   // COULD ADD SOME KIND OF FEEDBACK TO THE CUSTOMER IF THEY HAVE GOT AN ODD NUMBER OF ANY BOGOF ITEM THAT THEY CAN GET ANOTHER FOR FREE - WOULD NEED TO DO SOMETHING THAT DOES SIMILAR TO ABOVE BUT RETURNS THE ARRAYLIST OF BOGOFF ITEMS AND IF THERE'S ANYTHING IN THERE THAT MEANS THEY CAN GET ANOTHER ONE OF THAT FOR FREE.
 

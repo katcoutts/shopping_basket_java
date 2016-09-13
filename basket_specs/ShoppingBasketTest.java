@@ -85,6 +85,39 @@ public class ShoppingBasketTest {
       assertEquals(18.00, shoppingBasket.getShoppingCostWithBogof(), 0.005);
   }
 
+  @Test
+  public void canGetTenPerCentDiscountIfOver20(){
+    shoppingBasket.addItemToShopping(pizza);
+    shoppingBasket.addItemToShopping(pizza);
+    shoppingBasket.addItemToShopping(chicken);
+    shoppingBasket.addItemToShopping(chicken);
+    shoppingBasket.addItemToShopping(pasta);
+    shoppingBasket.addItemToShopping(pasta);
+    shoppingBasket.addItemToShopping(pizza);
+    shoppingBasket.addItemToShopping(chicken);
+    assertEquals(24.00, shoppingBasket.getShoppingCostWithBogof(), 0.005);
+    float discountedCost = shoppingBasket.discountOfTenPerCentIfOver20();
+    assertEquals(21.60, discountedCost, 0.005);
+  }
+
+  @Test
+  public void canGetLoyaltyCardDiscount(){
+    shoppingBasket.addItemToShopping(pizza);
+    shoppingBasket.addItemToShopping(pizza);
+    shoppingBasket.addItemToShopping(chicken);
+    shoppingBasket.addItemToShopping(chicken);
+    shoppingBasket.addItemToShopping(pasta);
+    shoppingBasket.addItemToShopping(pasta);
+    shoppingBasket.addItemToShopping(pizza);
+    shoppingBasket.addItemToShopping(chicken);
+    shoppingBasket.setLoyaltyCard(true);
+    assertEquals(true, shoppingBasket.getLoyaltyCard());
+    float finalCost = shoppingBasket.discountOfTenPerCentIfOver20();
+    assertEquals(21.60, finalCost, 0.005);
+    float loyaltyCost = shoppingBasket.discountForLoyaltyCard();
+    assertEquals(21.168, loyaltyCost, 0.005);
+  }
+
 
 
 
