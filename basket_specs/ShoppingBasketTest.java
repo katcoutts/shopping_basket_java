@@ -101,7 +101,7 @@ public class ShoppingBasketTest {
   }
 
   @Test
-  public void canGetLoyaltyCardDiscount(){
+  public void canGetFinalCostWithAllDiscounts(){
     shoppingBasket.addItemToShopping(pizza);
     shoppingBasket.addItemToShopping(pizza);
     shoppingBasket.addItemToShopping(chicken);
@@ -114,8 +114,21 @@ public class ShoppingBasketTest {
     assertEquals(true, shoppingBasket.getLoyaltyCard());
     float finalCost = shoppingBasket.discountOfTenPerCentIfOver20();
     assertEquals(21.60, finalCost, 0.005);
-    float loyaltyCost = shoppingBasket.discountForLoyaltyCard();
-    assertEquals(21.168, loyaltyCost, 0.005);
+    assertEquals(21.168, shoppingBasket.getFinalShoppingCost(), 0.005);
+  }
+
+  @Test
+  public void canGetFinalCost(){
+    shoppingBasket.addItemToShopping(pizza);
+    shoppingBasket.addItemToShopping(pizza);
+    shoppingBasket.addItemToShopping(chicken);
+    shoppingBasket.addItemToShopping(pasta);
+    shoppingBasket.addItemToShopping(pasta);
+    shoppingBasket.addItemToShopping(pizza);
+    shoppingBasket.addItemToShopping(chicken);
+    assertEquals(18.00, shoppingBasket.getFinalShoppingCost(), 0.005);
+    shoppingBasket.setLoyaltyCard(true);
+    assertEquals(17.64, shoppingBasket.getFinalShoppingCost(), 0.005);
   }
 
 

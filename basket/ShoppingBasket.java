@@ -55,6 +55,9 @@ public class ShoppingBasket{
         cost += item.getPrice();
       }
     }
+    for (ShoppingItem item : bogofItems){
+      System.out.println("You can get another " + item.getName() + " for free as it's on Buy-One-Get-One-Free");
+    }
     return cost;
   }
 
@@ -74,8 +77,20 @@ public class ShoppingBasket{
     return cost;
   }
 
+  public float getFinalShoppingCost(){
+    float cost = discountOfTenPerCentIfOver20();
+    if (loyaltyCard == true){
+      cost -= (cost / 50);
+    }
+    return cost;
+  }
 
-  // COULD ADD SOME KIND OF FEEDBACK TO THE CUSTOMER IF THEY HAVE GOT AN ODD NUMBER OF ANY BOGOF ITEM THAT THEY CAN GET ANOTHER FOR FREE - WOULD NEED TO DO SOMETHING THAT DOES SIMILAR TO ABOVE BUT RETURNS THE ARRAYLIST OF BOGOFF ITEMS AND IF THERE'S ANYTHING IN THERE THAT MEANS THEY CAN GET ANOTHER ONE OF THAT FOR FREE.
+
+
+
+
+
+
 
   public boolean checkForBogofItems(){
     for (ShoppingItem item: getShoppingItems()){
