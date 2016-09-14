@@ -60,27 +60,6 @@ public class ShoppingBasketTest {
     assertEquals(6.00, shoppingBasket.getBasicShoppingCost(), 0.005);
   }
 
-  @Test 
-  public void canGetBogofItems(){
-    shoppingBasket.addItemToShopping(pasta);
-    shoppingBasket.addItemToShopping(pizza);
-    shoppingBasket.addItemToShopping(pizza);
-    assertEquals(3, shoppingBasket.getShoppingItems().size());
-    assertEquals(2, shoppingBasket.getBogofItems().size());
-  }
-
-  @Test 
-  public void canGetFalseIfNoBogofItems(){
-    shoppingBasket.addItemToShopping(pasta);
-    assertEquals(false, shoppingBasket.checkForBogofItems());
-  }
-
-  @Test
-  public void canGetTrueIfThereAreBogofItems(){
-    shoppingBasket.addItemToShopping(pizza);
-    assertEquals(true, shoppingBasket.checkForBogofItems());
-  }
-
   @Test
   public void canGetShoppingCostWithBogof(){
       shoppingBasket.addItemToShopping(pizza);
@@ -139,6 +118,26 @@ public class ShoppingBasketTest {
     assertEquals(17.64, shoppingBasket.getFinalShoppingCost(), 0.005);
   }
 
+  @Test 
+  public void canGetBogofItems(){
+    shoppingBasket.addItemToShopping(pasta);
+    shoppingBasket.addItemToShopping(pizza);
+    shoppingBasket.addItemToShopping(pizza);
+    assertEquals(3, shoppingBasket.getShoppingItems().size());
+    assertEquals(2, shoppingBasket.getBogofItems().size());
+  }
+
+  @Test 
+  public void canGetFalseIfNoBogofItems(){
+    shoppingBasket.addItemToShopping(pasta);
+    assertEquals(false, shoppingBasket.checkForBogofItems());
+  }
+
+  @Test
+  public void canGetTrueIfThereAreBogofItems(){
+    shoppingBasket.addItemToShopping(pizza);
+    assertEquals(true, shoppingBasket.checkForBogofItems());
+  }
 
 
 
