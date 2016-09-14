@@ -1,5 +1,6 @@
 package basket;
 import java.util.*;
+import java.text.DecimalFormat;
 
 public class ShoppingBasket{
 
@@ -41,7 +42,8 @@ public class ShoppingBasket{
     for (ShoppingItem item : getShoppingItems()){
       cost += item.getPrice();
     }
-    return cost;
+    // return cost;
+    return (float)Math.round(cost * 100) / 100;
   }
 
   public float getShoppingCostWithBogof(){
@@ -62,7 +64,8 @@ public class ShoppingBasket{
     for (ShoppingItem item : bogofItems){
       System.out.println("You can get another " + item.getName() + " for free as it's on Buy-One-Get-One-Free");
     }
-    return cost;
+    // return cost;
+    return (float)Math.round(cost * 100) / 100;
   }
 
   public float discountOfTenPerCentIfOver20(){
@@ -70,23 +73,19 @@ public class ShoppingBasket{
     if (cost > 20.00){
       cost -= (cost / 10);
     }
-    return cost;
+    // return cost;
+    return (float)Math.round(cost * 100) / 100;
   }
 
-  public float discountForLoyaltyCard(){
-    float cost = discountOfTenPerCentIfOver20();
-    if (loyaltyCard == true){
-      cost -= (cost / 50);
-    }
-    return cost;
-  }
 
+// MAYBE ONLY USE THE MATH.ROUND IN THE FINAL ONE??
   public float getFinalShoppingCost(){
     float cost = discountOfTenPerCentIfOver20();
     if (loyaltyCard == true){
       cost -= (cost / 50);
     }
-    return cost;
+    // return cost;
+    return (float)Math.round(cost * 100) / 100;
   }
 
 
