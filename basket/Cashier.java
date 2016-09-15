@@ -14,6 +14,10 @@ public class Cashier{
     return this.shoppingBasket;
   }
 
+  public void setShoppingBasket(ShoppingBasket newShoppingBasket){
+    this.shoppingBasket = newShoppingBasket;
+  }
+
   public float getBasicShoppingCost(){
     float cost = 0.0f;
     for (ShoppingItem item : getShoppingBasket().getShoppingItems()){
